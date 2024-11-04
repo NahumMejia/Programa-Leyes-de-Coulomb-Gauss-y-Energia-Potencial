@@ -49,11 +49,10 @@ def main(page: ft.Page):
     inputs = []
 
     def calcular_resultado(e, ley, variable_calculada):
-        global inputs  # Asegúrate de que inputs sea global para acceder a él
+        global inputs
         try:
-            # Leer valores de los campos de entrada
-            valores = [input.value.strip() for input in inputs]  # Leer los valores como cadenas
-            valores_float = [float(value) for value in valores]  # Intentar convertir a float
+            valores = [input.value.strip() for input in inputs]
+            valores_float = [float(value) for value in valores]
 
             # Comprobar si hay algún valor inválido
             if len(valores_float) < len(inputs):
@@ -61,9 +60,8 @@ def main(page: ft.Page):
                 page.update()
                 return
             
-            k = 8.99e9  # Constante de Coulomb en N m²/C²
+            k = 8.99e9  # Constante de Coulomb
 
-            # Lógica de cálculo según la ley seleccionada
             if ley == "Ley de Coulomb":
                 if variable_calculada == "Fuerza (F)":
                     q1, q2, r = valores_float
@@ -100,7 +98,6 @@ def main(page: ft.Page):
                     U, q = valores_float
                     resultado = U / q
 
-            # Mostrar resultado en notación científica y sus unidades
             resultado_text.value = f"Resultado: {resultado:.2e} [{unidades[ley][variable_calculada]}]"
         except ValueError:
             resultado_text.value = "Por favor, ingresa valores válidos en todos los campos."
