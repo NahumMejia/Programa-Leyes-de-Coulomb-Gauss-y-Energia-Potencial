@@ -1,4 +1,5 @@
 import flet as ft
+import math
 
 def main(page: ft.Page):
     page.title = "Calculadora de Leyes de Física"
@@ -74,7 +75,7 @@ def main(page: ft.Page):
                     resultado = (F * (r ** 2)) / (k * q1)
                 elif variable_calculada == "Distancia (r)":
                     F, q1, q2 = valores_float
-                    resultado = ((k * q1 * q2) / F) ** 0.5
+                    resultado = math.sqrt((k * q1 * q2) / F)
 
             elif ley == "Ley de Gauss":
                 if variable_calculada == "Flujo eléctrico (Φ)":
